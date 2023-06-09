@@ -1,6 +1,6 @@
 # Projeto Star Wars Planets - TypeScript
 
-O Star Wars Planets é um projeto front-end desenvolvido em TypeScript, React, React Hook Form e Zod que permite aos usuários se registrar, fazer login e visualizar planetas da saga Star Wars por meio de uma integração com uma API. A aplicação também oferece funcionalidades de filtragem dos planetas.
+O Star Wars Planets é um projeto front-end desenvolvido em TypeScript, React, React Hook Form, Zod e TailwindCSS que permite aos usuários se registrar, fazer login e visualizar planetas da saga Star Wars por meio de uma integração com uma API. A aplicação também oferece funcionalidades de filtragem dos planetas.
 
 ## Funcionalidades
 
