@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -60,32 +60,56 @@ const Login = () => {
   };
 
   return (
-    <main className=" h-screen bg-zinc-900 flex items-center justify-center">
+    <main className="h-screen bg-zinc-900 flex items-center justify-center p-4">
       <form
-        className="flex flex-col gap-4 w-xs text-white"
+        className="flex flex-col gap-6 w-full max-w-sm bg-gray-800 p-6 rounded-lg shadow-lg"
         onSubmit={handleSubmit(onClickFunction)}
       >
-        <div className="flex flex-col gap-1">
-          <label htmlFor="email">Email</label>
-          <input type="text" className="text-black" {...register("email")} />
-          {errors.email && <span>{errors.email.message}</span>}
+        <h2 className="text-2xl font-bold text-white mb-4">Login</h2>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="text-white">
+            Email
+          </label>
+          <input
+            type="text"
+            id="email"
+            className="p-2 rounded border border-gray-600 bg-white text-black placeholder-gray-500"
+            {...register("email", { required: "Email is required" })}
+          />
+          {errors.email && (
+            <span className="text-red-400 text-sm">{errors.email.message}</span>
+          )}
         </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="password">Senha</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="password" className="text-white">
+            Senha
+          </label>
           <input
             type="password"
-            className="text-black"
-            {...register("password")}
+            id="password"
+            className="p-2 rounded border border-gray-600 bg-white text-black placeholder-gray-500"
+            {...register("password", { required: "Password is required" })}
           />
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.password && (
+            <span className="text-red-400 text-sm">
+              {errors.password.message}
+            </span>
+          )}
         </div>
-        <div>
-          <button type="submit">Entrar</button>
-          <a href="register" className="ml-24">
-            Registrar
-          </a>
-        </div>
-        {output && <span>Usuário não existe</span>}
+        <button
+          type="submit"
+          className="mt-4 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+        >
+          Entrar
+        </button>
+        <Link to="/register" className="mt-4 text-blue-400 hover:underline">
+          Registrar
+        </Link>
+        {output && (
+          <span className="text-red-400 text-center mt-4">
+            Usuário não existe
+          </span>
+        )}
       </form>
     </main>
   );
